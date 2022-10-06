@@ -9,5 +9,6 @@ namespace BuyTheBookStore.DataAccess.Repositories
 {
     public interface IBookRepository:IBaseRepository<Book>
     {
+        Task<Book> GetBookByAuthorAndName(string authorName,string bookName);
     }
 }
