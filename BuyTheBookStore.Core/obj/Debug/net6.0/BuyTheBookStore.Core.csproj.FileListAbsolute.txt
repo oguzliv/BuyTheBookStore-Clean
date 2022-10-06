@@ -1,0 +1,12 @@
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.Core\bin\Debug\net6.0\BuyTheBookStore.Core.deps.json
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.Core\bin\Debug\net6.0\BuyTheBookStore.Core.dll
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.Core\bin\Debug\net6.0\BuyTheBookStore.Core.pdb
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.Core\obj\Debug\net6.0\BuyTheBookStore.Core.csproj.AssemblyReference.cache
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.Core\obj\Debug\net6.0\BuyTheBookStore.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.Core\obj\Debug\net6.0\BuyTheBookStore.Core.AssemblyInfoInputs.cache
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.Core\obj\Debug\net6.0\BuyTheBookStore.Core.AssemblyInfo.cs
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.Core\obj\Debug\net6.0\BuyTheBookStore.Core.csproj.CoreCompileInputs.cache
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.Core\obj\Debug\net6.0\BuyTheBookStore.Core.dll
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.Core\obj\Debug\net6.0\refint\BuyTheBookStore.Core.dll
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.Core\obj\Debug\net6.0\BuyTheBookStore.Core.pdb
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.Core\obj\Debug\net6.0\ref\BuyTheBookStore.Core.dll

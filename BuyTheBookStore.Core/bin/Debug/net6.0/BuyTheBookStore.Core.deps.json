@@ -1,0 +1,23 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v6.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v6.0": {
+      "BuyTheBookStore.Core/1.0.0": {
+        "runtime": {
+          "BuyTheBookStore.Core.dll": {}
+        }
+      }
+    }
+  },
+  "libraries": {
+    "BuyTheBookStore.Core/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    }
+  }
+}

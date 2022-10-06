@@ -1,0 +1,17 @@
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.DataAccess\bin\Debug\net6.0\BuyTheBookStore.DataAccess.deps.json
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.DataAccess\bin\Debug\net6.0\BuyTheBookStore.DataAccess.runtimeconfig.json
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.DataAccess\bin\Debug\net6.0\BuyTheBookStore.DataAccess.dll
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.DataAccess\bin\Debug\net6.0\BuyTheBookStore.DataAccess.pdb
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.DataAccess\bin\Debug\net6.0\BuyTheBookStore.Core.dll
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.DataAccess\bin\Debug\net6.0\BuyTheBookStore.Core.pdb
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.DataAccess\obj\Debug\net6.0\BuyTheBookStore.DataAccess.csproj.AssemblyReference.cache
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.DataAccess\obj\Debug\net6.0\BuyTheBookStore.DataAccess.GeneratedMSBuildEditorConfig.editorconfig
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.DataAccess\obj\Debug\net6.0\BuyTheBookStore.DataAccess.AssemblyInfoInputs.cache
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.DataAccess\obj\Debug\net6.0\BuyTheBookStore.DataAccess.AssemblyInfo.cs
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.DataAccess\obj\Debug\net6.0\BuyTheBookStore.DataAccess.csproj.CoreCompileInputs.cache
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.DataAccess\obj\Debug\net6.0\BuyTheBookStore.DataAccess.csproj.CopyComplete
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.DataAccess\obj\Debug\net6.0\BuyTheBookStore.DataAccess.dll
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.DataAccess\obj\Debug\net6.0\refint\BuyTheBookStore.DataAccess.dll
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.DataAccess\obj\Debug\net6.0\BuyTheBookStore.DataAccess.pdb
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.DataAccess\obj\Debug\net6.0\BuyTheBookStore.DataAccess.genruntimeconfig.cache
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStore.DataAccess\obj\Debug\net6.0\ref\BuyTheBookStore.DataAccess.dll
