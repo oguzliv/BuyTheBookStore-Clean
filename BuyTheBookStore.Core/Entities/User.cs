@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BuyTheBookStore.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,14 +9,12 @@ using System.Threading.Tasks;
 
 namespace BuyTheBookStore.BuyTheBookStore.Core.Entities
 {
-    public class User
+    public class User:BaseEntity
     {
         public enum ROLE
         {
             ADMIN, CUSTOMER
         }
-        [Key]
-        public Guid Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

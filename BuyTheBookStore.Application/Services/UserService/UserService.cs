@@ -22,7 +22,6 @@ namespace BuyTheBookStore.Application.Services.UserService
         }
         public async Task<object> CreateUser(RegisterDto user)
         {
-            //User user = await _db.Users.FirstOrDefaultAsync(u => u.Email == registerDto.Email);
             var _user = await _userRepository.GetByEmail(user.Email);
 
             if (_user == null)
@@ -34,11 +33,7 @@ namespace BuyTheBookStore.Application.Services.UserService
 
                 await _userRepository.Create(_user);
 
-                ////_db.Users.Add(user);
-                ////await _db.SaveChangesAsync();
-
                 return _mapper.Map<UserResultDto>(_user);
-                //return 0;
             }
             else
             {
@@ -68,7 +63,8 @@ namespace BuyTheBookStore.Application.Services.UserService
 
         public async Task<object> GetUserById(Guid id)
         {
-            return await _userRepository.GetById(id);
+            var user = await _userRepository.GetById(id);
+            return _mapper.Map<UserResultDto>(user);
         }
 
         public async Task<object> GetUsers()
@@ -78,7 +74,7 @@ namespace BuyTheBookStore.Application.Services.UserService
 
         public async Task<object> UpdateAdmin(Guid id, UserDto user)
         {
-            var _user = await _userRepository.GetById(id);/*await _db.Users.FirstOrDefaultAsync(u => u.Id == id);*/
+            var _user = await _userRepository.GetById(id);
             if (_user == null)
                 return null;
 
@@ -89,10 +85,6 @@ namespace BuyTheBookStore.Application.Services.UserService
 
             await _userRepository.Update(newUser);
 
-            //_db.ChangeTracker.Clear();
-            //_db.Users.Update(newUser);
-            //await _db.SaveChangesAsync();
-
             return _mapper.Map<UserResultDto>(newUser);
         }
 
@@ -102,8 +94,6 @@ namespace BuyTheBookStore.Application.Services.UserService
             if (_user == null)
                 return null;
 
-            //var newUser = _mapper.Map<User>(customerDto);
-            //newUser.Role = User.ROLE.CUSTOMER;
             _user.Name = user.Name;
             _user.Email = user.Email;
             _user.PasswordHash = BCrypt.Net.BCrypt.HashPassword(user.Password);

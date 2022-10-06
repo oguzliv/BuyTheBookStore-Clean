@@ -1,4 +1,5 @@
-﻿using System;
+﻿using BuyTheBookStore.Core.Entities;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -8,10 +9,8 @@ using System.Threading.Tasks;
 
 namespace BuyTheBookStore.BuyTheBookStore.Core.Entities
 {
-    public class Order
+    public class Order:BaseEntity
     {
-        [Key]
-        public Guid OrderId { get; set; }
         [ForeignKey("UserId")]
         public Guid UserId { get; set; }
         public virtual User User { get; set; }

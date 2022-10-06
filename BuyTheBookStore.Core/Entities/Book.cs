@@ -8,14 +8,12 @@ using System.Threading.Tasks;
 
 namespace BuyTheBookStore.Core.Entities
 {
-    public class Book
+    public class Book:BaseEntity
     {
         public enum GENRE
         {
             ACTION, ROMANCE, SELF_DEVELOPMENT, SCIENCE
         }
-        [Key]
-        public Guid Id { get; set; }
         [Required]
         public string Name { get; set; }
         [Required]

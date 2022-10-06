@@ -56,7 +56,11 @@ namespace BuyTheBookStoreAPI.Controllers
         [HttpGet("{id}")]
         public async Task<object> Get([FromRoute] Guid id)
         {
-            return await _userService.GetUserById(id);
+            var user = await _userService.GetUserById(id);
+            if (user == null)
+                return NotFound($"{id} user not found");
+            else
+                return Ok(user);
         }
 
         [Authorize(Roles = "ADMIN")]
