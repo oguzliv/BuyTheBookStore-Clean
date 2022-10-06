@@ -1,5 +1,6 @@
 using AutoMapper;
 using BuyTheBookStore.Application;
+using BuyTheBookStore.Application.Services.BookService;
 using BuyTheBookStore.Application.Services.UserService;
 using BuyTheBookStore.Application.UserService.Services;
 using BuyTheBookStore.DataAccess.Persistence;
@@ -38,7 +39,10 @@ builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
 builder.Services.AddScoped<IUserService, UserService>();
+builder.Services.AddScoped<IBookService, BookService>();
+
 builder.Services.AddScoped<IUserRepository, UserRepository>();
+builder.Services.AddScoped<IBookRepository, BookRepository>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

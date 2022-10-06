@@ -83,7 +83,7 @@ namespace BuyTheBookStore.Application.Services.BookService
                 AuthorName = bookDto.AuthorName,
                 SellCount = book.SellCount,
                 GenreText = bookDto.GenreText,
-                Price = bookDto.Price,
+                Price = bookDto.Price == 0 ? book.Price : bookDto.Price,
             };
             await _bookRepository.Update(newBook);
             return newBook;
