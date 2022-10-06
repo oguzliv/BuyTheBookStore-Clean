@@ -21,5 +21,20 @@ namespace BuyTheBookStore.DataAccess.Repositories.Impl
             var book = await DbSet.FirstOrDefaultAsync(b => b.AuthorName == authorName && b.Name == bookName);
             return book;
         }
+        public async Task<IEnumerable<Book>> GetRecommendedBooks(string genre)
+        {
+            if (genre == null)
+            {
+                return await DbSet.OrderByDescending(b => b.NSPF).Take(5).ToListAsync();
+            }
+            else if (!System.Enum.IsDefined(typeof(Book.GENRE), genre.ToUpper()))
+            {
+                return null;
+            }
+            else
+            {
+                return await _db.Books.OrderByDescending(b => b.NSPF).Where(b => b.GenreText == genre.ToUpper()).Take(5).ToListAsync();
+            }
+        }
     }
 }
