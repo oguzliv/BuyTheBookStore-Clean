@@ -9,6 +9,8 @@
   <ItemGroup>
     <PackageReference Include="AutoMapper" Version="12.0.0" />
     <PackageReference Include="BCrypt.Net-Next" Version="4.0.3" />
+    <PackageReference Include="FluentValidation" Version="11.2.2" />
+    <PackageReference Include="Microsoft.AspNetCore.Mvc.Core" Version="2.2.5" />
     <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="System.IdentityModel.Tokens.Jwt" Version="6.23.1" />
   </ItemGroup>
@@ -16,6 +18,11 @@
   <ItemGroup>
     <ProjectReference Include="..\BuyTheBookStore.Core\BuyTheBookStore.Core.csproj" />
     <ProjectReference Include="..\BuyTheBookStore.DataAccess\BuyTheBookStore.DataAccess.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Validators\BookDtoValidators\" />
+    <Folder Include="Validators\OrderDtoValidators\" />
   </ItemGroup>
 
 </Project>

@@ -23,16 +23,29 @@ namespace BuyTheBookStoreAPI.Controllers
             _response = new ResponseDto();
         }
         [HttpPost("register")]
+        [ValidateModel]
         public async Task<object> Register([FromBody] RegisterDto user)
         {
-            var newUser = await _userService.CreateUser(user);
-            return Ok(newUser);
+            try
+            {
+
+                var newUser = await _userService.CreateUser(user);
+                return Ok(newUser);
+            }catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [HttpPost("login")]
         public async Task<object> Login([FromBody] LoginDto user)
         {
             try
             {
+                //if (!ModelState.IsValid)
+                //{
+                //    return BadRequest("invalid input in request");
+                //}
+
                 User userInDb = (User)await _userService.GetUserByEmail(user.Email);
                 if (userInDb == null || !BCrypt.Net.BCrypt.Verify(user.Password, userInDb.PasswordHash)){
                     return NotFound("Invalid username or password");
@@ -67,10 +80,6 @@ namespace BuyTheBookStoreAPI.Controllers
         [HttpPut("{id}")]
         public async Task<object> Update([FromRoute] Guid id, [FromBody] UserDto userDto)
         {
-            //if (!ModelState.IsValid)
-            //{
-            //    return BadRequest();
-            //}
             try
             {
                 _response.Result = await _userService.UpdateAdmin(id, userDto);
@@ -85,10 +94,8 @@ namespace BuyTheBookStoreAPI.Controllers
             }
             catch (Exception ex)
             {
-                _response.IsSuccess = false;
-                _response.ErrorMessage.Add(ex.Message);
+                return BadRequest(ex.Message);
             }
-            return _response;
         }
         [Authorize]
         [HttpPatch("{id}")]

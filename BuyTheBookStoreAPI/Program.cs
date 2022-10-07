@@ -1,23 +1,40 @@
 using AutoMapper;
 using BuyTheBookStore.Application;
+using BuyTheBookStore.Application.Helpers;
 using BuyTheBookStore.Application.Services.BookService;
 using BuyTheBookStore.Application.Services.OrderService;
 using BuyTheBookStore.Application.Services.RecommendationService;
 using BuyTheBookStore.Application.Services.UserService;
 using BuyTheBookStore.Application.UserService.Services;
+using BuyTheBookStore.Application.Validators;
+using BuyTheBookStore.Application.Validators.UserDtoValidators;
 using BuyTheBookStore.DataAccess.Persistence;
 using BuyTheBookStore.DataAccess.Repositories;
 using BuyTheBookStore.DataAccess.Repositories.Impl;
+using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
+using Newtonsoft.Json;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 
-builder.Services.AddControllers();
+builder.Services.AddControllers(options =>
+{
+    options.Filters.Add(typeof(ValidateModelAttribute));
+}).AddNewtonsoftJson(option =>
+{
+    option.SerializerSettings.MissingMemberHandling = MissingMemberHandling.Error;
+}).AddFluentValidation(fv =>
+{
+    fv.RegisterValidatorsFromAssemblyContaining<RegisterUserValidator>();
+    fv.RegisterValidatorsFromAssemblyContaining<LoginDtoValidatior>();
+    fv.RegisterValidatorsFromAssemblyContaining<CustomerUpdateDtoValidator>();
+    fv.RegisterValidatorsFromAssemblyContaining<UserDtoValidator>();
+}); 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(options => {
