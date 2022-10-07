@@ -23,54 +23,84 @@ namespace BuyTheBookStoreAPI.Controllers
         [HttpPost]
         public async Task<object> CreateOrder(OrderDto orderDto)
         {
-            Guid id = Guid.Parse(_contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "jti").Value);
-            var order = await _orderService.CreateOrder(id,orderDto);
-            if (order == null)
-                return BadRequest("Invalid Order");
-            else
-                return Ok(order);
+            try
+            {
+                Guid id = Guid.Parse(_contextAccessor.HttpContext.User.Claims.FirstOrDefault(x => x.Type == "jti").Value);
+                var order = await _orderService.CreateOrder(id, orderDto);
+                if (order == null)
+                    return BadRequest("Invalid Order");
+                else
+                    return Ok(order);
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [Authorize]
         [HttpPatch("{id}")]
-        public async Task<object> UpdateOrder([FromRoute] Guid id,OrderUpdateDto orderUpdateDto)
+        public async Task<object> UpdateOrder([FromRoute] Guid id, OrderDto orderDto)
         {
 
-            var order = await _orderService.UpdateOrder(id,orderUpdateDto);
-            if (order == null)
-                return NotFound($"{id} order not found");
-            else
-                return Ok(order);
+            try
+            {
+                var order = await _orderService.UpdateOrder(id, orderDto);
+                if (order == null)
+                    return NotFound($"{id} order not found");
+                else
+                    return Ok(order);
+            }catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
         }
         [Authorize]
         [HttpGet]
         public async Task<object> GetOrders()
         {
-            var orders =await _orderService.GetOrders();
-            if (orders == null)
-                return NotFound("No Books In the Store");
-            else
-                return orders;
+            try
+            {
+                var orders = await _orderService.GetOrders();
+                if (orders == null)
+                    return NotFound("No Books In the Store");
+                else
+                    return orders;
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [Authorize]
         [HttpGet("userorders/{userId}")]
         public async Task<object> GetUserOrders(Guid userId)
         {
-            var orders = await _orderService.GetUserOrders(userId);
-            if (orders == null)
-                return NotFound($"{userId} has no order");
-            else
-                return Ok(orders);
+            try
+            {
+                var orders = await _orderService.GetUserOrders(userId);
+                if (orders == null)
+                    return NotFound($"{userId} has no order");
+                else
+                    return Ok(orders);
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [Authorize]
         [HttpGet("{id}")]
         public async Task<object> GetOrder(Guid id)
         {
-            var order = await _orderService.GetOrder(id);
-            if (order == null)
-                return NotFound($"{id} order does not exist");
-            else
-                return Ok(order);
+            try
+            {
+                var order = await _orderService.GetOrder(id);
+                if (order == null)
+                    return NotFound($"{id} order does not exist");
+                else
+                    return Ok(order);
+            }catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
 
         }
         [Authorize]
@@ -78,11 +108,17 @@ namespace BuyTheBookStoreAPI.Controllers
         public async Task<object> DeleteOrder(Guid id)
         {
 
-            var order = await _orderService.DeleteOrder(id);
-            if (order == null)
-                return NotFound($"{id} order does not exist");
-            else
-                return Ok(order);
+            try
+            {
+                var order = await _orderService.DeleteOrder(id);
+                if (order == null)
+                    return NotFound($"{id} order does not exist");
+                else
+                    return Ok(order);
+            }catch(Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
     }
 }

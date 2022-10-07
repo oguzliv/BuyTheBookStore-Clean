@@ -26,43 +26,67 @@ namespace BuyTheBookStoreAPI.Controllers
         [HttpGet("{id}")]
         public async Task<object> GetBook([FromRoute] Guid id)
         {
-            var book = await _bookService.GetBookById(id);
-            if (book == null)
-                return NotFound($"{id} book does not exist");
-            else
+            try
             {
-                return Ok(book);  
+                var book = await _bookService.GetBookById(id);
+                if (book == null)
+                    return NotFound($"{id} book does not exist");
+                else
+                {
+                    return Ok(book);
+                }
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
             }
         }
         [Authorize(Roles ="ADMIN")]
         [HttpPost]
         public async Task<object> CreateBook([FromBody] BookDto bookDto)
         {
-            var book = await _bookService.CreateBook(bookDto);
-            if (book == null)
-                return BadRequest("Something went wrong with the inputs");
-            else
-                return Ok(book);
+            try
+            {
+                var book = await _bookService.CreateBook(bookDto);
+                if (book == null)
+                    return BadRequest("Something went wrong with the inputs");
+                else
+                    return Ok(book);
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [Authorize]
         [HttpPut("{id}")]
         public async Task<object> UpdateBook([FromRoute]Guid id, [FromBody] BookDto bookDto)
         {
-            var book = await _bookService.UpdateBook(id, bookDto);
-            if (book == null)
-                return NotFound($"{id} book does not exist");
-            else
-                return Ok(book);
+            try
+            {
+                var book = await _bookService.UpdateBook(id, bookDto);
+                if (book == null)
+                    return NotFound($"{id} book does not exist");
+                else
+                    return Ok(book);
+            }catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [Authorize(Roles ="ADMIN")]
         [HttpDelete("{id}")]
         public async Task<object> DeleteBook([FromRoute] Guid id)
         {
-            var deletedBook = await _bookService.DeleteBook(id);
-            if (deletedBook)
-                return Ok($"{id} book successfully deleted");
-            else
-                return NotFound($"{id} book not found");
+            try
+            {
+                var deletedBook = await _bookService.DeleteBook(id);
+                if (deletedBook)
+                    return Ok($"{id} book successfully deleted");
+                else
+                    return NotFound($"{id} book not found");
+            }catch(Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
     }

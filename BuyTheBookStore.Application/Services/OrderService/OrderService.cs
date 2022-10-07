@@ -115,7 +115,7 @@ namespace BuyTheBookStore.Application.Services.OrderService
                 return orders;
         }
 
-        public async Task<object> UpdateOrder(Guid id, OrderUpdateDto orderDto)
+        public async Task<object> UpdateOrder(Guid id, OrderDto orderDto)
         {
             double newPrice = 0;
 
@@ -125,7 +125,7 @@ namespace BuyTheBookStore.Application.Services.OrderService
                 return null;
 
             var jOrderUpdateDto = JObject.Parse(JsonConvert.SerializeObject(orderDto));
-            var jOrderItems = jOrderUpdateDto["Orders"];
+            var jOrderItems = jOrderUpdateDto["OrderItems"];
 
             foreach (var item in jOrderItems)
             {

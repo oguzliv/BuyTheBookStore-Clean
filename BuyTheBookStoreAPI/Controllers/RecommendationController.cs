@@ -19,11 +19,17 @@ namespace BuyTheBookStoreAPI.Controllers
         [HttpGet("{genre?}")]
         public async Task<object> Recommend([FromRoute] string? genre)
         {
-            var recommendedBooks = await _recommendationService.RecommendBook(genre);
-            if (recommendedBooks == null)
-                return BadRequest($"{genre} is Invalid");
-            else
-                return Ok(recommendedBooks);
+            try
+            {
+                var recommendedBooks = await _recommendationService.RecommendBook(genre);
+                if (recommendedBooks == null)
+                    return BadRequest($"{genre} is Invalid Genre");
+                else
+                    return Ok(recommendedBooks);
+            }catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
 
     }

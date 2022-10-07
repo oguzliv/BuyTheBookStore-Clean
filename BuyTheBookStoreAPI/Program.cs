@@ -7,6 +7,8 @@ using BuyTheBookStore.Application.Services.RecommendationService;
 using BuyTheBookStore.Application.Services.UserService;
 using BuyTheBookStore.Application.UserService.Services;
 using BuyTheBookStore.Application.Validators;
+using BuyTheBookStore.Application.Validators.BookDtoValidators;
+using BuyTheBookStore.Application.Validators.OrderDtoValidators;
 using BuyTheBookStore.Application.Validators.UserDtoValidators;
 using BuyTheBookStore.DataAccess.Persistence;
 using BuyTheBookStore.DataAccess.Repositories;
@@ -34,6 +36,9 @@ builder.Services.AddControllers(options =>
     fv.RegisterValidatorsFromAssemblyContaining<LoginDtoValidatior>();
     fv.RegisterValidatorsFromAssemblyContaining<CustomerUpdateDtoValidator>();
     fv.RegisterValidatorsFromAssemblyContaining<UserDtoValidator>();
+    fv.RegisterValidatorsFromAssemblyContaining<BookDtoValidator>();
+    fv.RegisterValidatorsFromAssemblyContaining<OrderDtoValidator>();
+    fv.RegisterValidatorsFromAssemblyContaining<OrderItemValidator>();
 }); 
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();

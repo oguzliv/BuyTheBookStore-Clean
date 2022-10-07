@@ -5,6 +5,6 @@ namespace BuyTheBookStore.Application.Dtos.OrderAPIDtos
     public class OrderDto
     {
         [Required]
-        public OrderItem[] OrderItems { get; set; } 
+        public ICollection<OrderItem> OrderItems { get; set; } 
     }
 }
