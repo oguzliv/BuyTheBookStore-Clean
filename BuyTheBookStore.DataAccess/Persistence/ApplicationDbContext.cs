@@ -26,24 +26,16 @@ namespace BuyTheBookStore.DataAccess.Persistence
                 x.OrderedBooks).HasConversion(
                     v => JsonSerializer.Serialize(v, new JsonSerializerOptions() { IgnoreNullValues = true }),
                     v => JsonSerializer.Deserialize<Dictionary<Guid, int>>(v, new JsonSerializerOptions() { IgnoreNullValues = true }));
+
             //modelBuilder.Entity<User>(e =>
             //{
-            //    e.HasMany<Order>(order => order.Orders).WithOne(u => u.User).HasForeignKey(o => o.OrderId).OnDelete(DeleteBehavior.Cascade);
+            //    e.HasMany<Order>(user => user.Orders).WithOne(order => order.User).HasForeignKey(order => order.Id).OnDelete(DeleteBehavior.Cascade);
             //});
             //modelBuilder.Entity<Order>(e =>
             //{
-            //    e.HasOne<User>(order => order.User).WithMany(u => u.Orders).HasForeignKey(o => o.UserId).OnDelete(DeleteBehavior.Cascade);
+            //    e.HasOne<User>(order => order.User).WithMany(user => user.Orders).HasForeignKey(order => order.UserId).OnDelete(DeleteBehavior.Cascade);
             //});
-            //modelBuilder.Entity<OrderBook>()
-            //.HasKey(bc => new { bc.BookId, bc.OrderId });
-            //modelBuilder.Entity<OrderBook>()
-            //    .HasOne(bc => bc.Book)
-            //    .WithMany(b => b.OrderBook)
-            //    .HasForeignKey(bc => bc.BookId);
-            //modelBuilder.Entity<OrderBook>()
-            //    .HasOne(bc => bc.Order)
-            //    .WithMany(c => c.OrderBook)
-            //    .HasForeignKey(bc => bc.OrderId);
+
 
 
 

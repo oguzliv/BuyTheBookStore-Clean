@@ -12,8 +12,8 @@ using Npgsql.EntityFrameworkCore.PostgreSQL.Metadata;
 namespace BuyTheBookStore.DataAccess.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20221006080700_newdb")]
-    partial class newdb
+    [Migration("20221007073339_orderrelationnew")]
+    partial class orderrelationnew
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -24,7 +24,60 @@ namespace BuyTheBookStore.DataAccess.Migrations
 
             NpgsqlModelBuilderExtensions.UseIdentityByDefaultColumns(modelBuilder);
 
-            modelBuilder.Entity("BuyTheBookStore.DataAccess.Persistence.Models.Book", b =>
+            modelBuilder.Entity("BuyTheBookStore.BuyTheBookStore.Core.Entities.Order", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("OrderedBooks")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<double>("Price")
+                        .HasColumnType("double precision");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("uuid");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("UserId");
+
+                    b.ToTable("Orders");
+                });
+
+            modelBuilder.Entity("BuyTheBookStore.BuyTheBookStore.Core.Entities.User", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uuid");
+
+                    b.Property<string>("Email")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<string>("PasswordHash")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.Property<int>("Role")
+                        .HasColumnType("integer");
+
+                    b.Property<string>("RoleText")
+                        .IsRequired()
+                        .HasColumnType("text");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("BuyTheBookStore.Core.Entities.Book", b =>
                 {
                     b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
@@ -63,7 +116,7 @@ namespace BuyTheBookStore.DataAccess.Migrations
                     b.HasData(
                         new
                         {
-                            Id = new Guid("7b1a4714-bd24-4fff-ad1e-6d8c260e79da"),
+                            Id = new Guid("1085e04b-86a7-461a-952f-8715cb1ccff8"),
                             AuthorName = "author1",
                             Genre = 0,
                             GenreText = "ACTION",
@@ -74,7 +127,7 @@ namespace BuyTheBookStore.DataAccess.Migrations
                         },
                         new
                         {
-                            Id = new Guid("9d8028ce-574c-49e6-b572-5794cb157507"),
+                            Id = new Guid("27058523-d841-4bf4-8ab3-2c7b232af066"),
                             AuthorName = "author2",
                             Genre = 0,
                             GenreText = "ACTION",
@@ -85,7 +138,7 @@ namespace BuyTheBookStore.DataAccess.Migrations
                         },
                         new
                         {
-                            Id = new Guid("c598db90-dcb7-4d71-b925-9688c0247b36"),
+                            Id = new Guid("37a681ae-1178-4868-9dce-04e59e06605c"),
                             AuthorName = "author3",
                             Genre = 0,
                             GenreText = "ACTION",
@@ -96,7 +149,7 @@ namespace BuyTheBookStore.DataAccess.Migrations
                         },
                         new
                         {
-                            Id = new Guid("aaaaaee4-7a3e-4bab-811b-8942554c78c6"),
+                            Id = new Guid("ed6aee94-fc2d-43e8-b7f2-335eab16965e"),
                             AuthorName = "author4",
                             Genre = 0,
                             GenreText = "ACTION",
@@ -107,7 +160,7 @@ namespace BuyTheBookStore.DataAccess.Migrations
                         },
                         new
                         {
-                            Id = new Guid("58c11087-dddd-43b0-9585-5e1e666336f4"),
+                            Id = new Guid("daba9607-84df-40a3-b709-b74ce16108d1"),
                             AuthorName = "author5",
                             Genre = 1,
                             GenreText = "ROMANCE",
@@ -118,7 +171,7 @@ namespace BuyTheBookStore.DataAccess.Migrations
                         },
                         new
                         {
-                            Id = new Guid("96d593c6-821b-446e-a2b4-be8c4e9fe179"),
+                            Id = new Guid("da5cf20a-6ffb-42fe-8d7f-756868000585"),
                             AuthorName = "author6",
                             Genre = 1,
                             GenreText = "ROMANCE",
@@ -129,7 +182,7 @@ namespace BuyTheBookStore.DataAccess.Migrations
                         },
                         new
                         {
-                            Id = new Guid("68f68905-2965-4f8f-9da4-3bf13a40eddb"),
+                            Id = new Guid("ee8e99f9-f659-41d3-9acf-d7fc9904330e"),
                             AuthorName = "author6",
                             Genre = 0,
                             GenreText = "ACTION",
@@ -140,68 +193,20 @@ namespace BuyTheBookStore.DataAccess.Migrations
                         });
                 });
 
-            modelBuilder.Entity("BuyTheBookStore.DataAccess.Persistence.Models.Order", b =>
+            modelBuilder.Entity("BuyTheBookStore.BuyTheBookStore.Core.Entities.Order", b =>
                 {
-                    b.Property<Guid>("OrderId")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("OrderedBooks")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("double precision");
-
-                    b.Property<Guid>("UserId")
-                        .HasColumnType("uuid");
-
-                    b.HasKey("OrderId");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Orders");
-                });
-
-            modelBuilder.Entity("BuyTheBookStore.DataAccess.Persistence.Models.User", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uuid");
-
-                    b.Property<string>("Email")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("Name")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<string>("PasswordHash")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.Property<int>("Role")
-                        .HasColumnType("integer");
-
-                    b.Property<string>("RoleText")
-                        .IsRequired()
-                        .HasColumnType("text");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("Users");
-                });
-
-            modelBuilder.Entity("BuyTheBookStore.DataAccess.Persistence.Models.Order", b =>
-                {
-                    b.HasOne("BuyTheBookStore.DataAccess.Persistence.Models.User", "User")
-                        .WithMany()
+                    b.HasOne("BuyTheBookStore.BuyTheBookStore.Core.Entities.User", "User")
+                        .WithMany("Orders")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
                     b.Navigation("User");
+                });
+
+            modelBuilder.Entity("BuyTheBookStore.BuyTheBookStore.Core.Entities.User", b =>
+                {
+                    b.Navigation("Orders");
                 });
 #pragma warning restore 612, 618
         }

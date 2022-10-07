@@ -22,7 +22,7 @@ namespace BuyTheBookStore.DataAccess.Repositories.Impl
         public async Task<T> Create(T entity)
         {
             var addedEntity = (await DbSet.AddAsync(entity)).Entity;
-            _db.SaveChanges();
+            await _db.SaveChangesAsync();
             return addedEntity;
         }
 
@@ -41,7 +41,7 @@ namespace BuyTheBookStore.DataAccess.Repositories.Impl
 
         public async Task<T> GetById(Guid id)
         {
-            return await DbSet.SingleOrDefaultAsync(s => s.Id == id); ;
+            return await DbSet.SingleOrDefaultAsync(s => s.Id == id);
         }
 
         public async Task<T> Update(T entity)

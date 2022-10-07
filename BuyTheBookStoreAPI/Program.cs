@@ -1,6 +1,7 @@
 using AutoMapper;
 using BuyTheBookStore.Application;
 using BuyTheBookStore.Application.Services.BookService;
+using BuyTheBookStore.Application.Services.OrderService;
 using BuyTheBookStore.Application.Services.RecommendationService;
 using BuyTheBookStore.Application.Services.UserService;
 using BuyTheBookStore.Application.UserService.Services;
@@ -39,12 +40,16 @@ IMapper mapper = MappingConfig.RegisterMaps().CreateMapper();
 builder.Services.AddSingleton(mapper);
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
+builder.Services.AddHttpContextAccessor();
+
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IBookService, BookService>();
 builder.Services.AddScoped<IRecommendationService, RecommendationService>();
+builder.Services.AddScoped<IOrderService, OrderService>();
 
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IBookRepository, BookRepository>();
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>

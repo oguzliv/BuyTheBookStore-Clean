@@ -22,6 +22,7 @@ C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBook
 C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStoreAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Protocols.OpenIdConnect.dll
 C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStoreAPI\bin\Debug\net6.0\Microsoft.IdentityModel.Tokens.dll
 C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStoreAPI\bin\Debug\net6.0\Microsoft.OpenApi.dll
+C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStoreAPI\bin\Debug\net6.0\Newtonsoft.Json.dll
 C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStoreAPI\bin\Debug\net6.0\Npgsql.dll
 C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStoreAPI\bin\Debug\net6.0\Npgsql.EntityFrameworkCore.PostgreSQL.dll
 C:\Projects\oguz\BuyTheBookStore\BuyTheBookStoreClean\BuyTheBookStore\BuyTheBookStoreAPI\bin\Debug\net6.0\Swashbuckle.AspNetCore.Swagger.dll

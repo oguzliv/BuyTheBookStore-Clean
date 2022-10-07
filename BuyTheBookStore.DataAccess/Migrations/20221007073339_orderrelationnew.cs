@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace BuyTheBookStore.DataAccess.Migrations
 {
-    public partial class newdb : Migration
+    public partial class orderrelationnew : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -47,14 +47,14 @@ namespace BuyTheBookStore.DataAccess.Migrations
                 name: "Orders",
                 columns: table => new
                 {
-                    OrderId = table.Column<Guid>(type: "uuid", nullable: false),
+                    Id = table.Column<Guid>(type: "uuid", nullable: false),
                     UserId = table.Column<Guid>(type: "uuid", nullable: false),
                     OrderedBooks = table.Column<string>(type: "text", nullable: false),
                     Price = table.Column<double>(type: "double precision", nullable: false)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Orders", x => x.OrderId);
+                    table.PrimaryKey("PK_Orders", x => x.Id);
                     table.ForeignKey(
                         name: "FK_Orders_Users_UserId",
                         column: x => x.UserId,
@@ -68,13 +68,13 @@ namespace BuyTheBookStore.DataAccess.Migrations
                 columns: new[] { "Id", "AuthorName", "Genre", "GenreText", "Name", "Price", "SellCount" },
                 values: new object[,]
                 {
-                    { new Guid("58c11087-dddd-43b0-9585-5e1e666336f4"), "author5", 1, "ROMANCE", "book5", 20.0, 20 },
-                    { new Guid("68f68905-2965-4f8f-9da4-3bf13a40eddb"), "author6", 0, "ACTION", "book7", 35.0, 50 },
-                    { new Guid("7b1a4714-bd24-4fff-ad1e-6d8c260e79da"), "author1", 0, "ACTION", "book1", 15.0, 20 },
-                    { new Guid("96d593c6-821b-446e-a2b4-be8c4e9fe179"), "author6", 1, "ROMANCE", "book6", 10.0, 40 },
-                    { new Guid("9d8028ce-574c-49e6-b572-5794cb157507"), "author2", 0, "ACTION", "book2", 30.0, 40 },
-                    { new Guid("aaaaaee4-7a3e-4bab-811b-8942554c78c6"), "author4", 0, "ACTION", "book4", 65.0, 100 },
-                    { new Guid("c598db90-dcb7-4d71-b925-9688c0247b36"), "author3", 0, "ACTION", "book3", 25.0, 40 }
+                    { new Guid("1085e04b-86a7-461a-952f-8715cb1ccff8"), "author1", 0, "ACTION", "book1", 15.0, 20 },
+                    { new Guid("27058523-d841-4bf4-8ab3-2c7b232af066"), "author2", 0, "ACTION", "book2", 30.0, 40 },
+                    { new Guid("37a681ae-1178-4868-9dce-04e59e06605c"), "author3", 0, "ACTION", "book3", 25.0, 40 },
+                    { new Guid("da5cf20a-6ffb-42fe-8d7f-756868000585"), "author6", 1, "ROMANCE", "book6", 10.0, 40 },
+                    { new Guid("daba9607-84df-40a3-b709-b74ce16108d1"), "author5", 1, "ROMANCE", "book5", 20.0, 20 },
+                    { new Guid("ed6aee94-fc2d-43e8-b7f2-335eab16965e"), "author4", 0, "ACTION", "book4", 65.0, 100 },
+                    { new Guid("ee8e99f9-f659-41d3-9acf-d7fc9904330e"), "author6", 0, "ACTION", "book7", 35.0, 50 }
                 });
 
             migrationBuilder.CreateIndex(

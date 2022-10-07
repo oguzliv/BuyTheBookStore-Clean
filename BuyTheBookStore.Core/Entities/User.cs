@@ -28,5 +28,7 @@ namespace BuyTheBookStore.BuyTheBookStore.Core.Entities
             get { return Role.ToString(); }
             set { Role = (ROLE)System.Enum.Parse(typeof(ROLE), value); }
         }
+
+        public virtual ICollection<Order> Orders { get; set; }  
     }
 }
