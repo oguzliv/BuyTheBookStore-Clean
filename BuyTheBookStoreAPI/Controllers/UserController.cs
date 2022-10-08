@@ -1,5 +1,4 @@
-﻿using AppDbContext.Models.Dtos;
-using BuyTheBookStore.Application.Dtos.UserAPIDtos;
+﻿using BuyTheBookStore.Application.Dtos.UserAPIDtos;
 using BuyTheBookStore.Application.Helpers;
 using BuyTheBookStore.Application.UserService.Services;
 using BuyTheBookStore.BuyTheBookStore.Core.Entities;
@@ -15,12 +14,10 @@ namespace BuyTheBookStoreAPI.Controllers
     {
         private readonly IUserService _userService;
         private readonly IConfiguration _configuration;
-        private ResponseDto _response;
         public UserController(IUserService userService, IConfiguration configuration)
         {
             _userService = userService;
             _configuration = configuration;
-            _response = new ResponseDto();
         }
         [HttpPost("register")]
         [ValidateModel]
@@ -59,17 +56,38 @@ namespace BuyTheBookStoreAPI.Controllers
         [HttpGet]
         public async Task<object> Get()
         {
-            return await _userService.GetUsers();
+            try
+            {
+                var users = await _userService.GetUsers();
+                if(users == null)
+                {
+                    return BadRequest();
+                }
+                else
+                {
+                    return users;
+                }
+            }catch (Exception ex)
+            {
+                return BadRequest(ex.Message);
+            }
         }
         [Authorize]
         [HttpGet("{id}")]
         public async Task<object> Get([FromRoute] Guid id)
         {
-            var user = await _userService.GetUserById(id);
-            if (user == null)
-                return NotFound($"{id} user not found");
-            else
-                return Ok(user);
+            try
+            {
+                var user = await _userService.GetUserById(id);
+                if (user == null)
+                    return NotFound($"{id} user not found");
+                else
+                    return Ok(user);
+            }
+            catch (Exception ex)
+            {
+                return NotFound(ex.Message);
+            }
         }
 
         [Authorize(Roles = "ADMIN")]
@@ -78,14 +96,14 @@ namespace BuyTheBookStoreAPI.Controllers
         {
             try
             {
-                _response.Result = await _userService.UpdateAdmin(id, userDto);
-                if (_response.Result == null)
+                var user = await _userService.UpdateAdmin(id, userDto);
+                if (user == null)
                 {
                     return NotFound($"{id} user not exist!");
                 }
                 else
                 {
-                    return Ok(_response);
+                    return Ok(user);
                 }
             }
             catch (Exception ex)
@@ -97,28 +115,22 @@ namespace BuyTheBookStoreAPI.Controllers
         [HttpPatch("{id}")]
         public async Task<object> UpdateUser([FromRoute] Guid id, [FromBody] CustomerUpdateDto customerDto)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
             try
             {
-                _response.Result = await _userService.UpdateUser(id, customerDto);
-                if (_response.Result == null)
+                var user = await _userService.UpdateUser(id, customerDto);
+                if (user == null)
                 {
                     return NotFound($"{id} user not exist!");
                 }
                 else
                 {
-                    return Ok(_response);
+                    return Ok(user);
                 }
             }
             catch (Exception ex)
             {
-                _response.IsSuccess = false;
-                _response.ErrorMessage.Add(ex.Message);
+                return BadRequest(ex.Message);
             }
-            return _response;
         }
 
 
@@ -126,10 +138,6 @@ namespace BuyTheBookStoreAPI.Controllers
         [HttpDelete("{id}")]
         public async Task<object> Delete(Guid id)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest();
-            }
             try
             {
                 var isDeleted = await _userService.DeleteUser(id);
@@ -139,17 +147,13 @@ namespace BuyTheBookStoreAPI.Controllers
                 }
                 else
                 {
-                    _response.Result = true;
-                    _response.IsSuccess = true;
-                    return Ok(_response);
+                    return Ok();
                 }
             }
             catch (Exception ex)
             {
-                _response.IsSuccess = false;
-                _response.ErrorMessage.Add(ex.Message);
+                return BadRequest(ex.Message);
             }
-            return _response;
         }
     }
 }
