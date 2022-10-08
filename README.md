@@ -1,5 +1,7 @@
 <h1>Buy The Book Store Api </h1>
 
+Postman collection of requests are found in the project folder as "buythebookstore.postman_collection".
+
 In order to run the project successfully please follow these steps : 
 
 <ol>
