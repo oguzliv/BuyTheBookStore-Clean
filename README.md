@@ -2,6 +2,10 @@
 
 Postman collection of requests are found in the project folder as "buythebookstore.postman_collection".
 
+For the application, there is already an admin user : email : <b>oguz@mail</b> and password : <b>oguz123</b>
+You can create an admin user by using register request. There is bearer authentication, just be sure to use most recent
+JWT token after logged in for postman collection. 
+
 In order to run the project successfully please follow these steps : 
 
 <ol>
