@@ -27,11 +27,10 @@ namespace BuyTheBookStore.Application.Services.OrderService
             order.Id = Guid.NewGuid();
             order.OrderedBooks = new Dictionary<Guid, int>();
 
-            //double ordertotalPrice = 0;
             foreach (var book in orderDto.OrderItems)
             {
                 //validate books
-                var orderedBook = await _bookRepository.GetById(book.BookId); /*await _db.Books.FirstOrDefaultAsync(b => b.Id == book.BookId);*/
+                var orderedBook = await _bookRepository.GetById(book.BookId);
 
                 if (orderedBook == null)
                     return null;
@@ -40,49 +39,32 @@ namespace BuyTheBookStore.Application.Services.OrderService
                 orderedBook.SellCount += book.Count;
 
                 order.OrderedBooks.Add(book.BookId, book.Count);
-                //update book table
-                //_db.Books.Update(orderedBook);
+    
                 await _bookRepository.Update(orderedBook);
-                //_db.SaveChanges();
             }
 
-            //write order into db
-            //_db.Orders.Add(order);
-            //try
-            //{
-
-            //}catch (Exception ex)
-            //{
-            //    return null;
-            //}
             await _orderRepository.Create(order);
 
-            //_db.SaveChanges();
 
             return order;
-            //throw new NotImplementedException();
         }
 
         public async Task<object> DeleteOrder(Guid id)
         {
-            var order = await _orderRepository.GetById(id);/*await _db.Orders.FirstOrDefaultAsync(o => o.OrderId == id);*/
+            var order = await _orderRepository.GetById(id);
             
 
             foreach (var item in order.OrderedBooks)
             {
-                //var bookId = Guid.Parse(item["BookId"].ToString());
-                var book = await _bookRepository.GetById(item.Key);/*await _db.Books.FirstOrDefaultAsync(b => b.Id == item.Key);*/
+                var book = await _bookRepository.GetById(item.Key);
 
                 if (book == null)
                     return null;
 
                 book.SellCount -= (int)item.Value;
 
-                //_db.Books.Update(book);
                 await _bookRepository.Update(book);
             }
-            //_db.Orders.Remove(order);
-            //_db.SaveChanges();
 
             await _orderRepository.Delete(order);
             return order;
@@ -119,7 +101,7 @@ namespace BuyTheBookStore.Application.Services.OrderService
         {
             double newPrice = 0;
 
-            var order = await _orderRepository.GetById(id); /*await _db.Orders.FirstOrDefaultAsync(o => o.OrderId == id);*/
+            var order = await _orderRepository.GetById(id); 
 
             if (order == null)
                 return null;
@@ -130,7 +112,7 @@ namespace BuyTheBookStore.Application.Services.OrderService
             foreach (var item in jOrderItems)
             {
                 var bookId = Guid.Parse(item["BookId"].ToString());
-                var book = await _bookRepository.GetById(bookId); /*await _db.Books.FirstOrDefaultAsync(b => b.Id == bookId);*/
+                var book = await _bookRepository.GetById(bookId); 
 
                 if (book == null)
                     continue;
@@ -140,14 +122,10 @@ namespace BuyTheBookStore.Application.Services.OrderService
                 newPrice += book.Price * (int)item["Count"];
                 book.SellCount = oldSellCount + (int)item["Count"];
 
-                //_db.Books.Update(book);
                 await _bookRepository.Update(book);
             }
             order.Price = newPrice;
 
-            //_db.Orders.Update(order);
-
-            //_db.SaveChanges();
             await _orderRepository.Update(order);
 
             return order;

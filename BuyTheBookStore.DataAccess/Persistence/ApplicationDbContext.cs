@@ -27,17 +27,6 @@ namespace BuyTheBookStore.DataAccess.Persistence
                     v => JsonSerializer.Serialize(v, new JsonSerializerOptions() { IgnoreNullValues = true }),
                     v => JsonSerializer.Deserialize<Dictionary<Guid, int>>(v, new JsonSerializerOptions() { IgnoreNullValues = true }));
 
-            //modelBuilder.Entity<User>(e =>
-            //{
-            //    e.HasMany<Order>(user => user.Orders).WithOne(order => order.User).HasForeignKey(order => order.Id).OnDelete(DeleteBehavior.Cascade);
-            //});
-            //modelBuilder.Entity<Order>(e =>
-            //{
-            //    e.HasOne<User>(order => order.User).WithMany(user => user.Orders).HasForeignKey(order => order.UserId).OnDelete(DeleteBehavior.Cascade);
-            //});
-
-
-
 
             modelBuilder.Entity<Book>().HasData(new Book
             {

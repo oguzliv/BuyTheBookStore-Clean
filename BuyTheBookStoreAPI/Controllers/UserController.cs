@@ -41,10 +41,6 @@ namespace BuyTheBookStoreAPI.Controllers
         {
             try
             {
-                //if (!ModelState.IsValid)
-                //{
-                //    return BadRequest("invalid input in request");
-                //}
 
                 User userInDb = (User)await _userService.GetUserByEmail(user.Email);
                 if (userInDb == null || !BCrypt.Net.BCrypt.Verify(user.Password, userInDb.PasswordHash)){
@@ -137,7 +133,6 @@ namespace BuyTheBookStoreAPI.Controllers
             try
             {
                 var isDeleted = await _userService.DeleteUser(id);
-                //_response.Result = await _userRepository.DeleteUser(id);
                 if (isDeleted == false)
                 {
                     return NotFound($"{id} user not exist!");
