@@ -19,8 +19,8 @@ Modify the "ConnectionStrings" attribute as shown below:
   <li>
  Open Package Manager Console and run these steps in order :
  <ul>
-  <li> write add-migration {migration_name}</li>
-  <li> write update-database</li>
+  <li> write <b>add-migration {migration_name}</b></li>
+  <li> write <b>update-database</b></li>
  </ul>
   </li>
 
