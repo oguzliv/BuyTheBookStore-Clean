@@ -1,5 +1,3 @@
-# BuyTheBookStore-Clean
-
 <h1>Buy The Book Store Api </h1>
 
 In order to run the project successfully please follow these steps : 
