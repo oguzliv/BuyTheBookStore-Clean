@@ -7,11 +7,13 @@ In order to run the project successfully please follow these steps :
 <ol>
  <li>  Project runs on PostgreSQL server. It configured according to file in the BuyTheBookStoreAPI/appsettings.json.
 Modify the "ConnectionStrings" attribute as shown below:
-<li>
+<ol>
+ <li>
   "ConnectionStrings": {
  "DefaultConnection": "User ID=<b>{POSTGRE_USERNAME}</b>;Password=<b>{DATABASE_PASSWORD}</b>; Server=<b>{HOSTNAME/ADDRESS}</b>;Port=<b>{PORT_NUMBER}</b>; Database=<b>{DATABASE_NAME}</b>;"
   },
 </li>
+  </ol>
   </li>
   
   <li>
